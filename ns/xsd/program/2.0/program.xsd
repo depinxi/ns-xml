@@ -680,6 +680,7 @@
 			</xsd:enumeration>
 		</xsd:restriction>
 	</xsd:simpleType>
+	
 	<xsd:element name="options" type="prg:optionsType">
 		<xsd:annotation>
 			<xsd:documentation xml:lang="en">
@@ -697,6 +698,13 @@
 			<xsd:selector xpath=".//prg:databinding/prg:variable" />
 			<xsd:field xpath="." />
 		</xsd:unique>
+	</xsd:element>
+
+	<xsd:element name="values" type="prg:valuesNodeType">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">
+			</xsd:documentation>
+		</xsd:annotation>
 	</xsd:element>
 
 	<xsd:element name="program">
