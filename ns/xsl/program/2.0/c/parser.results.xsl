@@ -29,8 +29,7 @@
 		</xsl:call-template>
 	</xsl:template>
 
-	<!-- Declare all option result variables from a root item (subcommand or 
-		program) -->
+	<!-- Declare all option result variables from a root item (subcommand or program) -->
 	<xsl:template name="prg.c.parser.optionResultsDeclaration">
 		<xsl:param name="rootNode" select="." />
 		<xsl:variable name="rootOptionsNode" select="$rootNode/prg:options" />
@@ -350,9 +349,14 @@
 					<xsl:with-param name="do">
 						<xsl:text>size_t len = (m-&gt;message) ? strlen(m-&gt;message) : 0;</xsl:text>
 						<xsl:value-of select="$str.endl" />
-						<xsl:text>fprintf(stream, "%s%s", ((use_prefix &amp;&amp; line_prefix) ? line_prefix : ""), m-&gt;message);</xsl:text>
-						<xsl:value-of select="$str.endl" />
-						<xsl:text>use_prefix = (len &amp;&amp; (m-&gt;message[len - 1] == '\n'));</xsl:text>
+						<xsl:call-template name="c.if">
+							<xsl:with-param name="condition" select="'len'" />
+							<xsl:with-param name="then">
+								<xsl:text>fprintf(stream, "%s%s", ((use_prefix &amp;&amp; line_prefix) ? line_prefix : ""), m-&gt;message);</xsl:text>
+								<xsl:value-of select="$str.endl" />
+								<xsl:text>use_prefix = (len &amp;&amp; (m-&gt;message[len - 1] == '\n'));</xsl:text>
+							</xsl:with-param>
+						</xsl:call-template>
 						<xsl:value-of select="$str.endl" />
 						<xsl:text>m = m-&gt;next_message;</xsl:text>
 					</xsl:with-param>
