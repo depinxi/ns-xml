@@ -201,7 +201,7 @@ if ns_array_contains 'subcommand-names' "${programContentOptions[@]}"
 then
 	cat >> "${shFile}" << EOF
 	\${displaySubcommandNames} \\
-		&& for n in "\${parser_subcomomand_names[@]}"; do echo "\${n}"; done \\
+		&& for n in "\${parser_subcommand_names[@]}"; do echo "\${n}"; done \\
 		&& exit 0
 EOF
 fi
@@ -227,7 +227,7 @@ if ns_array_contains 'subcommand-names' "${programContentOptions[@]}"
 then
 	cat >> "${shFile}" << EOF
 \${displaySubcommandNames} \\
-	&& for n in "\${parser_subcomomand_names[@]}"; do echo "\${n}"; done \\
+	&& for n in "\${parser_subcommand_names[@]}"; do echo "\${n}"; done \\
 	&& exit 0 
 EOF
 fi
